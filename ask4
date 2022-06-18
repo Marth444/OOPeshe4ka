@@ -1,0 +1,34 @@
+#include <iostream>
+
+using namespace std;
+
+class test
+{
+public:
+    int a;
+    int t;
+    test u;
+
+    int ff()
+    {
+        cout << y;
+        return 0;
+    }
+
+    int yy()
+    {
+        test p;
+        p.y;
+        return ff();
+    }
+
+        int y = 100;
+};
+
+int main()
+{
+    test t;
+
+    cout << t.yy();
+    
+}
