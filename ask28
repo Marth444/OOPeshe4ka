@@ -1,1 +1,49 @@
+#include <iostream>
+using namespace std;
 
+//Вопрос 28
+
+//Перегрузка операции () и понятие функтора.
+
+// функтор - это класс у которого переопределён опертор "()"
+// переопределив этот оператор мы получаем объект класса который может вести себя как функция
+// пример приведён в main
+// пример функтора - класс functor
+// функтор можно использовать для храрнеия данных, обычная функция так не может 
+class functor
+{	
+	public:
+		int mod = 7;
+
+		int operator() (int a, int b)
+		{	
+			int sum = a + b;
+			// тут приведён простой пример харнения данных с помощью функтора
+			// он запоминает количество раз использования данной "функции"
+			counterSumm++;
+			cout << endl;
+			return sum % mod;
+		}
+
+		void howSumm()
+		{
+			cout <<endl << "howsumm =" << counterSumm << endl;
+		}
+
+	private:
+		int counterSumm = 0;
+};
+
+int main()
+{
+	functor t;
+	t.howSumm();
+	cout << t(5, 5);
+	cout << t(6, 15);
+	t.howSumm();
+	cout << t(1, 1);
+	cout << t(7, 0);
+	cout << t(7, 7);
+	t.howSumm();
+	return 0;
+}
