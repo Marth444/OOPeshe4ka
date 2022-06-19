@@ -1,0 +1,70 @@
+#include <iostream>
+#include <string>
+#include <windows.h>
+#include <fstream>
+using namespace std;
+
+//Вопрос 31
+
+//Перегрузка операций << и >> и введение в класс собственных инструментов ввода/вывода.
+
+class test
+{
+	public:
+		
+		friend ostream& operator<<(ostream& os, const test& t);
+		friend istream& operator>> (istream& is, test& t);
+
+		test()
+		{
+			x = y = z = 0;
+		}
+
+		test( int X, int Y, int Z)
+		{
+			x = X;
+			y = Y;
+			z = Z;
+		}
+
+	private:
+		int x;
+		int y;
+		int z;
+};
+
+ostream& operator<<(ostream& os, const test& t)
+{	
+	os << t.x << " " << t.y << " " << t.z;
+	return os;
+}
+
+istream& operator>> (istream& is, test& t)
+{
+	is >> t.x >> t.y >> t.z;
+	return is;
+}
+
+int main()
+{	
+	string path = "myFile.txt";
+	setlocale(LC_ALL, "ru");
+
+	test p(1, 2, 3);
+	cout << p << endl;
+
+	fstream fs;
+	fs.open(path);
+
+	fs << p << endl;
+	fs.close();
+
+
+	test pp;
+	fs.open(path);
+	fs >> pp;
+	fs.close();
+
+	cout << pp << endl;
+
+}
