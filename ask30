@@ -23,6 +23,12 @@ class test
 			return arr[i];
 		}
 
+		//обобщение индекса (таким мы занимались в приктической по ООП номер 5 в классе BaseMatrix)
+		int operator()(int i, int j)
+		{
+			return mass[i][j];
+		}
+
 		int print()
 		{
 			for (int i = 0; i < 5; i++)
@@ -53,6 +59,10 @@ int main()
 	cout << "//////////////////////////" << endl;
 	const test cp;
 	cout << cp[3] << endl;
+	//т.к. объект cp константый - скомпилировать следующую строку нельзя
 	//cp[3] = 5051;
 
+	cout << "//////////////////////////" << endl;
+	test y;
+	cout << y(2,3) << endl;
 }
